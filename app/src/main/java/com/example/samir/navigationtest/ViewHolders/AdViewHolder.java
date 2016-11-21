@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.samir.navigationtest.Modules.Ad;
@@ -13,7 +14,8 @@ import com.example.samir.navigationtest.R;
 /**
  * Created by Samir on 16-Nov-16.
  */
-public class AdViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+// Representation of an advertisment
+public class AdViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView mAdImage;
     private TextView mAdName;
@@ -31,10 +33,4 @@ public class AdViewHolder extends RecyclerView.ViewHolder implements View.OnClic
         Glide.with(mAdImage.getContext()).load(ad.AdImage).into(mAdImage);
     }
 
-    @Override
-    public void onClick(View view) {
-        //Intent i = new Intent(view.getContext(), ACTIVITYNAME.class);
-        //i.putExtra("Place", mPlace);
-        //view.getContext().startActivity(i);
-    }
 }

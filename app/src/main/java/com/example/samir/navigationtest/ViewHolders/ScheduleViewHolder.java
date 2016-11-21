@@ -1,29 +1,35 @@
 package com.example.samir.navigationtest.ViewHolders;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.samir.navigationtest.Modules.ScheduleInfo;
+import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
 
 /**
  * Created by Shogun on 17.11.2016..
  */
+// Representation of Schedule information
+public class ScheduleViewHolder extends RecyclerView.ViewHolder{
 
-public class ScheduleViewHolder extends RecyclerView.ViewHolder {
-
-    private TextView mArrTime;
-    private ScheduleInfo scheduleInfo;
+    private TextView mTime;
+    private TextView mRoute;
+    private Route route;
 
     public ScheduleViewHolder(View v) {
         super(v);
-        mArrTime = (TextView) v.findViewById(R.id.arrTime);
+        mTime = (TextView) v.findViewById(R.id.mTime);
+        mRoute = (TextView) v.findViewById(R.id.route);
     }
 
-    public void bindSchedule(ScheduleInfo si) {
-        scheduleInfo = si;
-        mArrTime.setText(si.arrival_time + "-" + si.departure_time);
-
+    public void bindSchedule(Route route) {
+        this.route = route;
+        mTime.setText(route.depTime + "-" + route.arrTime);
+        mRoute.setText(route.startAddress +" to "+ route.endAddress);
     }
+
+
 }

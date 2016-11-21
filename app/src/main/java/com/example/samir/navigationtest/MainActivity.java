@@ -2,7 +2,6 @@ package com.example.samir.navigationtest;
 
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
@@ -15,7 +14,7 @@ import com.example.samir.navigationtest.Adapters.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    public SectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
 
@@ -25,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);                                // Shogun V
         RecyclerView recList = (RecyclerView) findViewById(R.id.scheduleList);
-
-                                  // Shogun V
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+    }
+
+    public void setAdapterToMap(){
+        mViewPager.setCurrentItem(3);
     }
 
 
@@ -65,7 +66,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }

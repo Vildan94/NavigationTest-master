@@ -11,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.samir.navigationtest.Fragments.PlaceholderFragment;
 import com.example.samir.navigationtest.Modules.DirectionFinder;
 import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
@@ -31,7 +31,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// Fragment that displays a map and a route on it
 public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener {
 
     MapView mMapView;
