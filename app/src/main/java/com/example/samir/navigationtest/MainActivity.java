@@ -9,13 +9,23 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.samir.navigationtest.Adapters.SectionsPagerAdapter;
+import com.example.samir.navigationtest.Fragments.MapViewFragment;
+import com.example.samir.navigationtest.Modules.Route;
+
+import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
     public SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
 
     @Override
@@ -40,8 +50,53 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setAdapterToMap(){
+    public void setAdapterToMap(String s){
+
         mViewPager.setCurrentItem(3);
+
+        String [] st = s.split(",");
+        Spinner location;
+        Spinner destination;
+        ArrayList<String> arr1 = new ArrayList();
+        ArrayList<String> arr2 = new ArrayList();
+        arr1.add(st[0]);
+        arr2.add(st[1]);
+        View rootView = mViewPager.getRootView();
+        location = (Spinner) rootView.findViewById(R.id.location);
+        destination = (Spinner) rootView.findViewById(R.id.destination);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arr1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        location.setAdapter(adapter);
+        location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //
+
+        // Set 2 spiner
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arr2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        destination.setAdapter(adapter2);
+        destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 

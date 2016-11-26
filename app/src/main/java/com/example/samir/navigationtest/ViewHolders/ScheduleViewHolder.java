@@ -1,11 +1,13 @@
 package com.example.samir.navigationtest.ViewHolders;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
 
@@ -17,7 +19,6 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder{
 
     private TextView mTime;
     private TextView mRoute;
-    private Route route;
 
     public ScheduleViewHolder(View v) {
         super(v);
@@ -25,11 +26,16 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder{
         mRoute = (TextView) v.findViewById(R.id.route);
     }
 
-    public void bindSchedule(Route route) {
-        this.route = route;
+    public void bindSchedule(final Route route, ScheduleViewHolder scheduleViewHolder, final Context mContext) {
         mTime.setText(route.depTime + "-" + route.arrTime);
         mRoute.setText(route.startAddress +" to "+ route.endAddress);
-    }
 
+        scheduleViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)mContext).setAdapterToMap(route.startAddress+","+route.endAddress);
+            }
+        });
+    }
 
 }

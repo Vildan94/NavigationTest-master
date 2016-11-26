@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 
 import com.example.samir.navigationtest.Adapters.ScheduleAdapter;
@@ -47,20 +48,11 @@ public class ScheduleFragment extends PlaceholderFragment {
         // TO DO should be added from the database
         ArrayList<Route> routes = new ArrayList<>();
         routes.add(new Route("6:00","7:00","Visoko","Sarajevo"));
-        routes.add(new Route("7:00","8:00","Visoko","Sarajevo"));
-        routes.add(new Route("8:00","9:00","Visoko","Sarajevo"));
-        routes.add(new Route("9:00","10:00","Visoko","Sarajevo"));
-        routes.add(new Route("10:00","11:00","Visoko","Sarajevo"));
-        routes.add(new Route("11:00","12:00","Visoko","Sarajevo"));
-        routes.add(new Route("12:00","13:00","Visoko","Sarajevo"));
-        routes.add(new Route("13:00","14:00","Visoko","Sarajevo"));
-        routes.add(new Route("14:00","15:00","Visoko","Sarajevo"));
-        routes.add(new Route("15:00","16:00","Visoko","Sarajevo"));
-        routes.add(new Route("16:00","17:00","Visoko","Sarajevo"));
-        routes.add(new Route("17:00","18:00","Visoko","Sarajevo"));
-        routes.add(new Route("18:00","19:00","Visoko","Sarajevo"));
-        routes.add(new Route("19:00","20:00","Visoko","Sarajevo"));
-        routes.add(new Route("20:00","21:00","Visoko","Sarajevo"));
+        routes.add(new Route("7:00","8:00","Ilijas","Visoko"));
+        routes.add(new Route("8:00","9:00","Gorazde","Sarajevo"));
+        routes.add(new Route("9:00","10:00","Zenica","Visoko"));
+        routes.add(new Route("10:00","11:00","Tuzla","Sarajevo"));
+        routes.add(new Route("11:00","12:00","Sarajevo","Mostar"));
         return routes;
     }
 }

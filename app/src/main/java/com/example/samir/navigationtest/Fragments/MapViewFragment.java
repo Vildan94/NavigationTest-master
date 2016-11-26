@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.samir.navigationtest.Adapters.SectionsPagerAdapter;
+import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.DirectionFinder;
 import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
@@ -39,12 +41,12 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private SearchView findPath;
     private Spinner location;
     private Spinner destination;
-    private List<Marker> locationMarkers = new ArrayList<>();
-    private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
     private String loc;
     private String dest;
+    private ArrayList<String> arr1 = new ArrayList();
+    private ArrayList<String> arr2 = new ArrayList();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,10 +58,8 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         destination = (Spinner) rootView.findViewById(R.id.destination);
 
         // Testing list, should be getting this from the database
-        ArrayList<String> a = new ArrayList();
-        a.add("Sarajevo");
-        a.add("Ilidza");
-        a.add("Visoko");
+        // moved to variables
+
 
 
         mMapView.onCreate(savedInstanceState);
@@ -73,7 +73,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         }
 
         // Set 1 spiner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(adapter);
         location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -90,7 +90,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         //
 
         // Set 2 spiner
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr2);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         destination.setAdapter(adapter2);
         destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -151,17 +151,6 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         progressDialog = ProgressDialog.show(getContext(), "Please wait.",
                 "Finding direction..!", true);
 
-        if (locationMarkers != null) {
-            for (Marker marker : locationMarkers) {
-                marker.remove();
-            }
-        }
-
-        if (destinationMarkers != null) {
-            for (Marker marker : destinationMarkers) {
-                marker.remove();
-            }
-        }
 
         if (polylinePaths != null) {
             for (Polyline polyline:polylinePaths ) {
@@ -174,8 +163,6 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     public void onDirectionFinderSuccess(List<Route> routes) {
         progressDialog.dismiss();
         polylinePaths = new ArrayList<>();
-        locationMarkers = new ArrayList<>();
-        destinationMarkers = new ArrayList<>();
 
         for (Route route : routes) {
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));

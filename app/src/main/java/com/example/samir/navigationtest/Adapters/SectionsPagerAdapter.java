@@ -1,13 +1,17 @@
 package com.example.samir.navigationtest.Adapters;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.SparseArray;
 
+import com.example.samir.navigationtest.Fragments.MapViewFragment;
 import com.example.samir.navigationtest.Fragments.PlaceholderFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+    private SparseArray<PlaceholderFragment> registeredFragments = new SparseArray<PlaceholderFragment>();
 
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -15,7 +19,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PlaceholderFragment.newInstance(position + 1);
+        PlaceholderFragment fragment = PlaceholderFragment.newInstance(position + 1);
+        registeredFragments.put(position, fragment);
+        return fragment;
     }
 
     @Override
@@ -34,5 +40,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "Map";
         }
         return null;
+    }
+
+    public Fragment getFragmentAtPosition(int position) {
+        return registeredFragments.get(position);
     }
 }
