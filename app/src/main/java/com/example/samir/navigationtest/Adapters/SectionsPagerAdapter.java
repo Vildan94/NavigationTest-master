@@ -41,8 +41,4 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }
         return null;
     }
-
-    public Fragment getFragmentAtPosition(int position) {
-        return registeredFragments.get(position);
-    }
 }

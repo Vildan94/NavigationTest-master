@@ -17,12 +17,6 @@ public abstract class PlaceholderFragment extends Fragment {
         MapViewFragment mapViewFragment = new MapViewFragment(); // Samir
         AdvertismentFragment advertismentFragment = new AdvertismentFragment(); // Ahmed
         ScheduleFragment scheduleFragment = new ScheduleFragment(); // Shogun V
-        Bundle args = new Bundle();
-        args.putInt("section_number", sectionNumber);
-        mapViewFragment.setArguments(args); // Samir
-        advertismentFragment.setArguments(args); // Ahmed
-        scheduleFragment.setArguments(args); // Shogun V
-
         if(sectionNumber==1){ // Ahmed
             return  advertismentFragment;
         }

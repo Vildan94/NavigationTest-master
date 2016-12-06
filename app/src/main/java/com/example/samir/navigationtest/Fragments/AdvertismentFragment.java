@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import com.example.samir.navigationtest.Adapters.AdAdapter;
 import com.example.samir.navigationtest.Modules.Ad;
 import com.example.samir.navigationtest.R;
-
 import java.util.ArrayList;
 
 // Fragment used to show Advertisment

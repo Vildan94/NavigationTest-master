@@ -1,7 +1,6 @@
 package com.example.samir.navigationtest.Modules;
 
 import com.google.android.gms.maps.model.LatLng;
-
 import java.util.List;
 
 public class Route {

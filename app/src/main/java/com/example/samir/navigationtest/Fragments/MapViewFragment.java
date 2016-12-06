@@ -24,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.Polyline;
@@ -34,19 +35,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Fragment that displays a map and a route on it
-public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener {
+public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener{
 
     MapView mMapView;
     private GoogleMap googleMap;
     private SearchView findPath;
-    private Spinner location;
-    private Spinner destination;
+    private TextView location;
+    private TextView destination;
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
     private String loc;
     private String dest;
-    private ArrayList<String> arr1 = new ArrayList();
-    private ArrayList<String> arr2 = new ArrayList();
+    Bundle savedMapState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,16 +54,18 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         findPath = (SearchView) rootView.findViewById(R.id.Search);
-        location = (Spinner) rootView.findViewById(R.id.location);
-        destination = (Spinner) rootView.findViewById(R.id.destination);
+        location = (TextView) rootView.findViewById(R.id.location);
+        destination = (TextView) rootView.findViewById(R.id.destination);
 
-        // Testing list, should be getting this from the database
-        // moved to variables
-
-
-
-        mMapView.onCreate(savedInstanceState);
-
+        if (savedInstanceState != null) {
+            loc = savedInstanceState.getString("LOCATION");
+            dest = savedInstanceState.getString("DESTINATION");
+            location.setText(loc);
+            destination.setText(dest);
+            mMapView.onCreate(savedMapState);
+        }else {
+            mMapView.onCreate(savedInstanceState);
+        }
         mMapView.onResume(); // needed to get the map to display immediately
 
         try {
@@ -71,41 +73,6 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // Set 1 spiner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr1);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        location.setAdapter(adapter);
-        location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        //
-
-        // Set 2 spiner
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr2);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        destination.setAdapter(adapter2);
-        destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        //
 
         // Send request to get path
         findPath.setOnSearchClickListener(new View.OnClickListener() {
@@ -133,11 +100,21 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         return rootView;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedMapState = new Bundle(savedInstanceState);
+        savedInstanceState.putString("LOCATION",loc);
+        savedInstanceState.putString("DESTINATION",dest);
+        mMapView.onSaveInstanceState(savedMapState);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     private void sendRequest() {
-        TextView temp = (TextView) location.getSelectedView();
-        TextView tempo = (TextView) destination.getSelectedView();
-        loc = temp.getText().toString();
-        dest = tempo.getText().toString();
+        loc = location.getText().toString();
+        dest = destination.getText().toString();
 
         try {
             new DirectionFinder(this, loc, dest).execute();

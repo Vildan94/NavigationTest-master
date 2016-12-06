@@ -1,27 +1,19 @@
 package com.example.samir.navigationtest.Adapters;
 
-
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-
-import com.example.samir.navigationtest.Fragments.MapViewFragment;
-import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
 import com.example.samir.navigationtest.ViewHolders.ScheduleViewHolder;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Shogun on 17.11.2016..
  */
+
 // Adapter that lists schedule info
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder> {
 
@@ -51,6 +43,5 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder> {
                 inflate(R.layout.fragment_schedule_card, viewGroup, false);
         return new ScheduleViewHolder(itemView);
     }
-
 
 }

@@ -1,12 +1,9 @@
 package com.example.samir.navigationtest.ViewHolders;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.samir.navigationtest.Modules.Ad;
 import com.example.samir.navigationtest.R;
@@ -14,12 +11,12 @@ import com.example.samir.navigationtest.R;
 /**
  * Created by Samir on 16-Nov-16.
  */
+
 // Representation of an advertisment
 public class AdViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView mAdImage;
     private TextView mAdName;
-    private Ad mAd;
 
     public AdViewHolder(View itemView) {
         super(itemView);
@@ -28,7 +25,6 @@ public class AdViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindAd(Ad ad) {
-        mAd = ad;
         mAdName.setText(ad.AdName);
         Glide.with(mAdImage.getContext()).load(ad.AdImage).into(mAdImage);
     }
