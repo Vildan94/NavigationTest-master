@@ -22,6 +22,7 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder{
 
     public ScheduleViewHolder(View v) {
         super(v);
+
         mTime = (TextView) v.findViewById(R.id.mTime);
         mRoute = (TextView) v.findViewById(R.id.route);
     }

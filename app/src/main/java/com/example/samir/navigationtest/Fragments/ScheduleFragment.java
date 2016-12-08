@@ -2,15 +2,24 @@ package com.example.samir.navigationtest.Fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
+import android.widget.TabHost;
+import android.widget.Toast;
+
+
 import com.example.samir.navigationtest.Adapters.ScheduleAdapter;
-import com.example.samir.navigationtest.DatabaseHandler;
+import com.example.samir.navigationtest.MainActivity;
+import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
+
 import java.util.ArrayList;
+
 
 /**
  * Created by Shogun on 16.11.2016..
@@ -18,6 +27,11 @@ import java.util.ArrayList;
 
 // Fragment that shows the schedule info
 public class ScheduleFragment extends PlaceholderFragment {
+
+    private SearchView findPath;
+    private Spinner location;
+    private Spinner destination;
+
 
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
     RecyclerView recyclerView;
@@ -28,6 +42,9 @@ public class ScheduleFragment extends PlaceholderFragment {
 
         ArrayList<Route> routes = getRoutes();
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        findPath = (SearchView) view.findViewById(R.id.Search);
+        location = (Spinner) view.findViewById(R.id.location);
+        destination = (Spinner) view.findViewById(R.id.destination);
 
         scheduleAdapter = new ScheduleAdapter(routes,getContext());
         recyclerView = (RecyclerView) view.findViewById(R.id.scheduleList);
@@ -39,22 +56,15 @@ public class ScheduleFragment extends PlaceholderFragment {
     }
 
     public ArrayList<Route> getRoutes(){
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        db.deleteAll(); // Temporary
-        if((db.getAllRoutes().isEmpty())) // Temporary
-        addRoutes(); // Temporary
-        return db.getAllRoutes();
+        // TO DO should be added from the database
+        ArrayList<Route> routes = new ArrayList<>();
+    /** routes.add(new Route("6:00","7:00","Visoko","Sarajevo"));
+        routes.add(new Route("7:00","8:00","Ilijas","Visoko"));
+        routes.add(new Route("8:00","9:00","Gorazde","Sarajevo"));
+        routes.add(new Route("9:00","10:00","Zenica","Visoko"));
+        routes.add(new Route("10:00","11:00","Tuzla","Sarajevo"));
+        routes.add(new Route("11:00","12:00","Sarajevo","Mostar"));
+      */ return routes;
     }
 
-    public void addRoutes(){
-        // TO DO we need to find a way to read routes from somewhere
-        // so that we can insert them into the database
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        db.addRoute(new Route("6:00", "7:00", "Visoko", "Sarajevo"));
-        db.addRoute(new Route("7:00", "8:00", "Ilijas", "Visoko"));
-        db.addRoute(new Route("8:00", "9:00", "Gorazde", "Sarajevo"));
-        db.addRoute(new Route("9:00", "10:00", "Zenica", "Visoko"));
-        db.addRoute(new Route("10:00", "11:00", "Tuzla", "Sarajevo"));
-        db.addRoute(new Route("11:00", "12:00", "Sarajevo", "Mostar"));
     }
-}
