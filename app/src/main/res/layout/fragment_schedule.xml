@@ -12,21 +12,22 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-
+        android:id="@+id/searchlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         >
 
-     <TextView android:text="@string/choose_source"
+        <TextView android:text="@string/choose_source"
 
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:id="@+id/sources"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/sources"/>
 
         <Spinner
-            android:id="@+id/location"
+            android:id="@+id/locationn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -41,27 +42,22 @@
             android:id="@+id/destinations"/>
 
         <Spinner
-            android:id="@+id/destination"
+            android:id="@+id/destinationn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/destinations"
             >
         </Spinner>
-        <android.support.v7.widget.SearchView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/Search"
-            android:layout_above="@id/destination"
-            android:layout_gravity="right"
-            >
-        </android.support.v7.widget.SearchView>
+
 
     </LinearLayout>
 
 
 
+
     <android.support.v7.widget.RecyclerView
+        android:paddingTop="90dp"
         android:id="@+id/scheduleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

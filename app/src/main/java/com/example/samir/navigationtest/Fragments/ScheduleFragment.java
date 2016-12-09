@@ -28,9 +28,7 @@ import java.util.ArrayList;
 // Fragment that shows the schedule info
 public class ScheduleFragment extends PlaceholderFragment {
 
-    private SearchView findPath;
-    private Spinner location;
-    private Spinner destination;
+
 
 
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
@@ -42,9 +40,7 @@ public class ScheduleFragment extends PlaceholderFragment {
 
         ArrayList<Route> routes = getRoutes();
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
-        findPath = (SearchView) view.findViewById(R.id.Search);
-        location = (Spinner) view.findViewById(R.id.location);
-        destination = (Spinner) view.findViewById(R.id.destination);
+
 
         scheduleAdapter = new ScheduleAdapter(routes,getContext());
         recyclerView = (RecyclerView) view.findViewById(R.id.scheduleList);
@@ -57,14 +53,15 @@ public class ScheduleFragment extends PlaceholderFragment {
 
     public ArrayList<Route> getRoutes(){
         // TO DO should be added from the database
-        ArrayList<Route> routes = new ArrayList<>();
-    /** routes.add(new Route("6:00","7:00","Visoko","Sarajevo"));
+      ArrayList<Route> routes = new ArrayList<>();
+        routes.add(new Route("6:00","7:00","Visoko","Sarajevo"));
         routes.add(new Route("7:00","8:00","Ilijas","Visoko"));
         routes.add(new Route("8:00","9:00","Gorazde","Sarajevo"));
         routes.add(new Route("9:00","10:00","Zenica","Visoko"));
         routes.add(new Route("10:00","11:00","Tuzla","Sarajevo"));
         routes.add(new Route("11:00","12:00","Sarajevo","Mostar"));
-      */ return routes;
+
+        return routes;
     }
 
     }
