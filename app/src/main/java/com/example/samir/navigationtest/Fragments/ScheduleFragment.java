@@ -7,6 +7,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
 
@@ -34,12 +37,33 @@ public class ScheduleFragment extends PlaceholderFragment {
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
     RecyclerView recyclerView;
     ScheduleAdapter scheduleAdapter;
+    Spinner spinner1;
+    Spinner spinner2;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ArrayList<Route> routes = getRoutes();
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        spinner1 = (Spinner) view.findViewById(R.id.locationn);
+        spinner2 = (Spinner) view.findViewById(R.id.destinationn);
+       String [] list1;
+        String [] list2;
+
+         list1 = getLocations();
+       list2 = getDestinations();
+        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_dropdown_item_1line,list1);
+        spinner1.setAdapter(arrayAdapter1);
+
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_dropdown_item_1line,list2);
+        spinner2.setAdapter(arrayAdapter2);
+
+
+
+
+
 
 
         scheduleAdapter = new ScheduleAdapter(routes,getContext());
@@ -64,4 +88,27 @@ public class ScheduleFragment extends PlaceholderFragment {
         return routes;
     }
 
+    public String[] getLocations(){
+
+        ArrayList<String> s = new ArrayList();
+
+        for (Route r: getRoutes()) {
+            s.add(r.startAddress);
+        }
+
+        return s.toArray(new String[s.size()]);
+
+    }
+
+    public String[] getDestinations(){
+
+        ArrayList<String> s = new ArrayList();
+
+        for (Route r: getRoutes()) {
+            s.add(r.endAddress);
+        }
+
+        return s.toArray(new String[s.size()]);
+
+    }
     }
