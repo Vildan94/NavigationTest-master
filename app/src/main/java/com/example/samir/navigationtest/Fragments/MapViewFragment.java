@@ -38,6 +38,7 @@ import java.util.List;
 public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener{
 
     MapView mMapView;
+    MapView mSaveMapView;
     private GoogleMap googleMap;
     private SearchView findPath;
     private TextView location;
@@ -46,7 +47,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private ProgressDialog progressDialog;
     private String loc;
     private String dest;
-    Bundle savedMapState;
+    private Bundle savedMapState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -146,7 +147,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
 
             PolylineOptions polylineOptions = new PolylineOptions().
                     geodesic(true).
-                    color(Color.BLUE).
+                    color(Color.RED).
                     width(10);
 
             for (int i = 0; i < route.points.size(); i++)
