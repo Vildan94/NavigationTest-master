@@ -55,9 +55,11 @@ public class ScheduleFragment extends PlaceholderFragment {
          list1 = getLocations();
        list2 = getDestinations();
         ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_dropdown_item_1line,list1);
+        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(arrayAdapter1);
 
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_dropdown_item_1line,list2);
+        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(arrayAdapter2);
 
 
