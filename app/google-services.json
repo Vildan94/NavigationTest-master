@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "697662672804",
+    "firebase_url": "https://navigationtest-4838a.firebaseio.com",
+    "project_id": "navigationtest-4838a",
+    "storage_bucket": "navigationtest-4838a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697662672804:android:3a4f7f219b5a84d3",
+        "android_client_info": {
+          "package_name": "com.example.samir.navigationtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697662672804-1cgnhgh7khelncf46bk9p3go4bbetf17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_5rhFHmMDF4B3wlQzEVjlgUy4kNlQP2I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

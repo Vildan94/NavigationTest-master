@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.samir.navigationtest.Modules.Route;
+import com.example.samir.navigationtest.Modules.SimpleRoute;
 import com.example.samir.navigationtest.R;
 import com.example.samir.navigationtest.ViewHolders.ScheduleViewHolder;
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
 // Adapter that lists schedule info
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder> {
 
-    private List<Route> scheduleList;
+    private List<SimpleRoute> scheduleList;
     private Context mContext;
-    public Route si;
+    public SimpleRoute si;
 
-    public ScheduleAdapter(List<Route> scheduleList,Context context) {
+    public ScheduleAdapter(List<SimpleRoute> scheduleList, Context context) {
         this.scheduleList = scheduleList;
         this.mContext=context;
     }

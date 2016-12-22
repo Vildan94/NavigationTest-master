@@ -14,17 +14,14 @@ public abstract class PlaceholderFragment extends Fragment {
 
     public static PlaceholderFragment newInstance(int sectionNumber) {
 
-        MapViewFragment mapViewFragment = new MapViewFragment(); // Samir
-        AdvertismentFragment advertismentFragment = new AdvertismentFragment(); // Ahmed
-        ScheduleFragment scheduleFragment = new ScheduleFragment(); // Shogun V
         if(sectionNumber==1){ // Ahmed
-            return  advertismentFragment;
+            return new AdvertismentFragment(); // Ahmed
         }
         else if(sectionNumber==2){          // Shogun V
-            return  scheduleFragment;
+            return  new ScheduleFragment(); // Shogun V
         }
         else { // Samir
-            return  mapViewFragment;
+            return  new MapViewFragment(); // Samir
         }
     }
 

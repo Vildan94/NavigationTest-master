@@ -38,7 +38,6 @@ import java.util.List;
 public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener{
 
     MapView mMapView;
-    MapView mSaveMapView;
     private GoogleMap googleMap;
     private SearchView findPath;
     private TextView location;
@@ -48,6 +47,15 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private String loc;
     private String dest;
     private Bundle savedMapState;
+    private ArrayList<String> stopovers;// Need to update map acording to this // TODO: 22-Dec-16  
+
+    public ArrayList<String> getStopovers() {
+        return stopovers;
+    }
+
+    public void setStopovers(ArrayList<String> stopovers) {
+        this.stopovers = stopovers;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

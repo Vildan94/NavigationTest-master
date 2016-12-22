@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.Route;
+import com.example.samir.navigationtest.Modules.SimpleRoute;
 import com.example.samir.navigationtest.R;
 
 /**
@@ -27,14 +28,14 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder{
         mRoute = (TextView) v.findViewById(R.id.route);
     }
 
-    public void bindSchedule(final Route route, ScheduleViewHolder scheduleViewHolder, final Context mContext) {
+    public void bindSchedule(final SimpleRoute route, ScheduleViewHolder scheduleViewHolder, final Context mContext) {
         mTime.setText(route.depTime + "-" + route.arrTime);
         mRoute.setText(route.startAddress +" to "+ route.endAddress);
 
         scheduleViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)mContext).setAdapterToMap(route.startAddress+","+route.endAddress);
+                ((MainActivity)mContext).setAdapterToMap(route.startAddress+","+route.endAddress,route.allStopovers);
             }
         });
     }
