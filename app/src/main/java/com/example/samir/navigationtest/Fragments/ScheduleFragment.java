@@ -143,17 +143,20 @@ public class ScheduleFragment extends PlaceholderFragment {
     // works
     public void initializeRoutes(){
         ArrayList<String> VS = new ArrayList<>();
-        VS.add("Ljeseva");
-        VS.add("Podlugovi");
-        VS.add("LIlijas");
-        VS.add("Semizovac");
-        VS.add("Vogosca");
+        VS.add("R445 Ljesevo");
+        VS.add("Bosanski Put, Ilijas");
+        VS.add("R445 Malesici");
+        VS.add("Stara Cesta, Semizovac");
+        VS.add("Igmanska 44, Vogošća");
+        VS.add("Maršala Tita 10, Sarajevo");
         ArrayList<String> SV = new ArrayList<>();
-        SV.add("Vogosca");
-        SV.add("Semizovac");
-        SV.add("Ilijas");
-        SV.add("Podlugovi");
-        SV.add("Ljeseva");
+        SV.add("Hamze Hume, Sarajevo");
+        SV.add("Igmanska 44, Vogošća");
+        SV.add("Stara Cesta, Semizovac");
+        SV.add("R445 Malesici");
+        SV.add("Bosanski Put, Ilijas");
+        SV.add("R445 Ljesevo");
+
         ArrayList<SimpleRoute> routes1 = new ArrayList<>();
         routes1.add(new SimpleRoute("6:00","7:00","Visoko","Sarajevo",VS));
         routes1.add(new SimpleRoute("8:00","9:00","Visoko","Sarajevo",VS));

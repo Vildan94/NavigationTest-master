@@ -45,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
     public void setAdapterToMap(String s, ArrayList<String> list){
         mViewPager.setCurrentItem(3);
 
+        SingletonContainer container = SingletonContainer.getInstance();
+        container.setList(list);
+
         String [] st = s.split(",");
         TextView location;
         TextView destination;
 
-        MapViewFragment f = (MapViewFragment) mSectionsPagerAdapter.getItem(3);
-        f.setStopovers(list);
         View rootView = mViewPager.getRootView();
         location = (TextView) rootView.findViewById(R.id.location);
         destination = (TextView) rootView.findViewById(R.id.destination);

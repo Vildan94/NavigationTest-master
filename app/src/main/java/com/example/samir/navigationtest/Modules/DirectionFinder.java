@@ -23,23 +23,49 @@ public class DirectionFinder {
     private DirectionFinderListener listener;
     private String origin;
     private String destination;
+    private ArrayList<String> stopovers;
 
-    public DirectionFinder(DirectionFinderListener listener, String origin, String destination) {
+    public DirectionFinder(DirectionFinderListener listener, String origin, String destination,ArrayList<String> stopovers) {
         this.listener = listener;
         this.origin = origin;
         this.destination = destination;
+        this.stopovers = stopovers;
     }
 
     public void execute() throws UnsupportedEncodingException {
         listener.onDirectionFinderStart();
-        new DownloadRawData().execute(createUrl());
+        ArrayList<String> urls = getUrls();
+        for (String s:urls) {
+            new DownloadRawData().execute(s);
+        }
     }
 
     private String createUrl() throws UnsupportedEncodingException {
         String urlOrigin = URLEncoder.encode(origin, "utf-8");
         String urlDestination = URLEncoder.encode(destination, "utf-8");
-
         return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY;
+    }
+
+    private ArrayList<String> getUrls() throws UnsupportedEncodingException {
+        ArrayList<String> urls = new ArrayList<>();
+        for(int i =0;i<stopovers.size();i++) {
+            if(i== 0) {
+                String urlOrigin = URLEncoder.encode(origin, "utf-8");
+                String urlDestination = URLEncoder.encode(stopovers.get(i), "utf-8");
+                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
+            }else if(i == stopovers.size()-1) {
+                String urlOrigin = URLEncoder.encode(stopovers.get(i-1), "utf-8");
+                String urlDestination = URLEncoder.encode(destination, "utf-8");
+                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
+            }
+            else {
+                String urlOrigin = URLEncoder.encode(stopovers.get(i-1), "utf-8");
+                String urlDestination = URLEncoder.encode(stopovers.get(i), "utf-8");
+                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
+            }
+
+        }
+        return urls;
     }
 
     private class DownloadRawData extends AsyncTask<String, Void, String> {

@@ -19,6 +19,7 @@ import com.example.samir.navigationtest.Modules.DirectionFinder;
 import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
 import com.example.samir.navigationtest.R;
+import com.example.samir.navigationtest.SingletonContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -47,7 +48,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private String loc;
     private String dest;
     private Bundle savedMapState;
-    private ArrayList<String> stopovers;// Need to update map acording to this // TODO: 22-Dec-16  
+    private ArrayList<String> stopovers;// Need to update map acording to this
 
     public ArrayList<String> getStopovers() {
         return stopovers;
@@ -124,12 +125,18 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private void sendRequest() {
         loc = location.getText().toString();
         dest = destination.getText().toString();
+        SingletonContainer container = SingletonContainer.getInstance();
+        stopovers = container.getList();
+
+        loc = "Autobuska stanica" + loc;
+        dest = "Autobuska stanica" + dest;
 
         try {
-            new DirectionFinder(this, loc, dest).execute();
+            new DirectionFinder(this, loc, dest,stopovers).execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
