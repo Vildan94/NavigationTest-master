@@ -10,11 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.samir.navigationtest.Adapters.ScheduleAdapter;
+import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.SimpleRoute;
 import com.example.samir.navigationtest.R;
+import com.google.android.gms.drive.internal.QueryRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,11 +29,12 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Shogun on 16.11.2016..
+ * Created by Vildan on 16.11.2016..
  */
 
 // Fragment that shows the schedule info
 public class ScheduleFragment extends PlaceholderFragment {
+
 
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
     RecyclerView recyclerView;
@@ -44,13 +49,26 @@ public class ScheduleFragment extends PlaceholderFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         routes = new ArrayList<>();
-        selection = "Sarajevo";
+        selection = "Visoko";
         //initializeRoutes();
+
 
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-        spinner1 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.locationn);
+        spinner1 =  (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.locationn);
         spinner2 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.destinationn);
+
+        Button displayRoutes = (Button) view.findViewById (R.id.btnDisplayRoutes);
+
+        displayRoutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("DemoButtonApp", "You clicked the button!");
+                Toast.makeText(view.getContext(), "You have searched!", Toast.LENGTH_LONG)
+                        .show();
+
+            }
+        });
 
         final ArrayList<String> a = new ArrayList();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -64,13 +82,16 @@ public class ScheduleFragment extends PlaceholderFragment {
                     if(!a.contains(value))
                         a.add(value);
                 }
-                // Set 1 spiner
+
+
+                // Set 1 spinner
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner1.setAdapter(adapter);
                 spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
 
                     }
 
@@ -79,13 +100,15 @@ public class ScheduleFragment extends PlaceholderFragment {
 
                     }
                 });
+
                 //
 
-                // Set 2 spiner
+                // Set 2 spinner
                 ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
                 adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner2.setAdapter(adapter2);
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -95,7 +118,10 @@ public class ScheduleFragment extends PlaceholderFragment {
 
         // when I get location and destination I need to find routes
 
+
+
         routes = getStation(selection);
+
 
         // need routes MUST HAVE
         scheduleAdapter = new ScheduleAdapter(routes,getContext());
@@ -106,13 +132,19 @@ public class ScheduleFragment extends PlaceholderFragment {
         return view;
     }
 
+
+
     private ArrayList<SimpleRoute> getStation(String name) {
         final ArrayList<SimpleRoute> s = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
         databaseReference.child(name).addValueEventListener(new ValueEventListener() {
+
+
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child : children) {
                     SimpleRoute r = child.getValue(SimpleRoute.class);
@@ -137,7 +169,6 @@ public class ScheduleFragment extends PlaceholderFragment {
         });
         return s;
     }
-
 
     // works
     public void initializeRoutes(){

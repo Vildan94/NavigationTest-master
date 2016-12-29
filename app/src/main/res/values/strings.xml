@@ -6,7 +6,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_source">Choose your location</string>
     <string name="choose_destionation">Choose destination</string>
-
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="SEARCH">SEARCH</string>
 
 </resources>
 
