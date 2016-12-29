@@ -7,14 +7,8 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.samir.navigationtest.Adapters.SectionsPagerAdapter;
-import com.example.samir.navigationtest.MainActivity;
 import com.example.samir.navigationtest.Modules.DirectionFinder;
 import com.example.samir.navigationtest.Modules.DirectionFinderListener;
 import com.example.samir.navigationtest.Modules.Route;
@@ -25,7 +19,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -44,6 +37,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private SearchView findPath;
     private TextView location;
     private TextView destination;
+    private List<List<Polyline>> allPolylinePaths = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
@@ -52,6 +46,7 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private String dest;
     private Bundle savedMapState;
     private ArrayList<String> stopovers;// Need to update map acording to this
+    private ArrayList<List<Polyline>> allPolylines;
 
     public ArrayList<String> getStopovers() {
         return stopovers;
@@ -116,7 +111,8 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
         dest = destination.getText().toString();
         SingletonContainer container = SingletonContainer.getInstance();
         stopovers = container.getList();
-        polylinePaths = new ArrayList<>();
+
+
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap mMap) {
@@ -130,7 +126,6 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point1,zoom));
             }
         });
-
 
         try {
             new DirectionFinder(this, loc, dest, stopovers).execute();
@@ -158,11 +153,22 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
             }
         }
 
+        if(allPolylinePaths != null) {
+            for (List<Polyline> lp : allPolylinePaths) {
+                if (lp != null) {
+                    for (Polyline p : lp) {
+                        p.remove();
+                    }
+                }
+            }
+        }
+        /*
         if (polylinePaths != null) {
             for (Polyline polyline:polylinePaths ) {
                 polyline.remove();
             }
         }
+        */
     }
 
     @Override
@@ -185,10 +191,12 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
                     color(Color.RED).
                     width(10);
 
+
             for (int i = 0; i < route.points.size(); i++)
                 polylineOptions.add(route.points.get(i));
 
             polylinePaths.add(googleMap.addPolyline(polylineOptions));
+            allPolylinePaths.add(polylinePaths);
         }
     }
 
