@@ -18,7 +18,7 @@ import java.util.List;
 // Adapter that lists schedule info
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder> {
 
-    private List<SimpleRoute> scheduleList;
+    public List<SimpleRoute> scheduleList;
     private Context mContext;
     public SimpleRoute si;
 

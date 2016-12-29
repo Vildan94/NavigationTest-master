@@ -46,7 +46,6 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
     private String dest;
     private Bundle savedMapState;
     private ArrayList<String> stopovers;// Need to update map acording to this
-    private ArrayList<List<Polyline>> allPolylines;
 
     public ArrayList<String> getStopovers() {
         return stopovers;

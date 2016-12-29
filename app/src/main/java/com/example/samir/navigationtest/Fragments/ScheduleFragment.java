@@ -36,20 +36,20 @@ import java.util.ArrayList;
 public class ScheduleFragment extends PlaceholderFragment {
 
 
-    StaggeredGridLayoutManager mStaggeredGridLayoutManager;
-    RecyclerView recyclerView;
-    ScheduleAdapter scheduleAdapter;
-    com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner1;
-    com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner2;
-    ArrayList<SimpleRoute> routes;
-    String selection;
+    private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
+    private RecyclerView recyclerView;
+    private ScheduleAdapter scheduleAdapter;
+    private com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner1;
+    private com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner2;
+    private ArrayList<SimpleRoute> routes;
+    private String selection;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         routes = new ArrayList<>();
-        selection = "Visoko";
+        selection = "Sarajevo";
         //initializeRoutes();
 
 
@@ -63,10 +63,12 @@ public class ScheduleFragment extends PlaceholderFragment {
         displayRoutes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("DemoButtonApp", "You clicked the button!");
-                Toast.makeText(view.getContext(), "You have searched!", Toast.LENGTH_LONG)
-                        .show();
 
+                scheduleAdapter.scheduleList = getStation(selection);
+                scheduleAdapter.notifyDataSetChanged();
+
+                // Vildan stavio
+                Toast.makeText(view.getContext(), "You have searched!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -85,14 +87,13 @@ public class ScheduleFragment extends PlaceholderFragment {
 
 
                 // Set 1 spinner
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
+                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner1.setAdapter(adapter);
                 spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
+                        selection = a.get(position);
                     }
 
                     @Override
@@ -120,7 +121,7 @@ public class ScheduleFragment extends PlaceholderFragment {
 
 
 
-        routes = getStation(selection);
+        //routes = getStation(selection);
 
 
         // need routes MUST HAVE
@@ -139,8 +140,6 @@ public class ScheduleFragment extends PlaceholderFragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
         databaseReference.child(name).addValueEventListener(new ValueEventListener() {
-
-
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -233,7 +232,6 @@ public class ScheduleFragment extends PlaceholderFragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
         for (int i=0;i<routes1.size();i++) {
-            String [] d;
             databaseReference.child(routes1.get(i).startAddress).push().setValue(routes1.get(i));
         }
     }
