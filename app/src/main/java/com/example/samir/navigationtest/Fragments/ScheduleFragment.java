@@ -34,8 +34,8 @@ public class ScheduleFragment extends PlaceholderFragment {
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
     RecyclerView recyclerView;
     ScheduleAdapter scheduleAdapter;
-    Spinner spinner1;
-    Spinner spinner2;
+    com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner1;
+    com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner2;
     ArrayList<SimpleRoute> routes;
     String selection;
 
@@ -49,8 +49,8 @@ public class ScheduleFragment extends PlaceholderFragment {
 
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-        spinner1 = (Spinner) view.findViewById(R.id.locationn);
-        spinner2 = (Spinner) view.findViewById(R.id.destinationn);
+        spinner1 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.locationn);
+        spinner2 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.destinationn);
 
         final ArrayList<String> a = new ArrayList();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -71,8 +71,7 @@ public class ScheduleFragment extends PlaceholderFragment {
                 spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        selection = a.get(position);
-                        routes = getStation(selection);
+
                     }
 
                     @Override
@@ -143,33 +142,67 @@ public class ScheduleFragment extends PlaceholderFragment {
     // works
     public void initializeRoutes(){
         ArrayList<String> VS = new ArrayList<>();
-        VS.add("R445 Ljesevo");
-        VS.add("Bosanski Put, Ilijas");
-        VS.add("R445 Malesici");
-        VS.add("Stara Cesta, Semizovac");
-        VS.add("Igmanska 44, Vogošća");
-        VS.add("Maršala Tita 10, Sarajevo");
+        VS.add("Autobuska stanica Visoko, Federacija Bosne i Hercegovine");
+        VS.add("R445 Ljesevo, Federacija Bosne i Hercegovine");
+        VS.add("Bosanski Put, Ilijas, Federacija Bosne i Hercegovine");
+        VS.add("R445 Malesici, Federacija Bosne i Hercegovine");
+        VS.add("Stara Cesta, Semizovac, Federacija Bosne i Hercegovine");
+        VS.add("Igmanska 44, Vogošća, Federacija Bosne i Hercegovine");
+        VS.add("Maršala Tita 10, Sarajevo, Federacija Bosne i Hercegovine");
+        VS.add("Autobuska stanica Sarajevo, Federacija Bosne i Hercegovine");
+
         ArrayList<String> SV = new ArrayList<>();
-        SV.add("Hamze Hume, Sarajevo");
-        SV.add("Igmanska 44, Vogošća");
-        SV.add("Stara Cesta, Semizovac");
-        SV.add("R445 Malesici");
-        SV.add("Bosanski Put, Ilijas");
-        SV.add("R445 Ljesevo");
+        SV.add("Autobuska stanica Sarajevo, Federacija Bosne i Hercegovine");
+        SV.add("Hamze Hume, Sarajevo, Federacija Bosne i Hercegovine");
+        SV.add("Igmanska 44, Vogošća, Federacija Bosne i Hercegovine");
+        SV.add("Stara Cesta, Semizovac, Federacija Bosne i Hercegovine");
+        SV.add("R445 Malesici, Federacija Bosne i Hercegovine");
+        SV.add("Bosanski Put, Ilijas, Federacija Bosne i Hercegovine");
+        SV.add("R445 Ljesevo, Federacija Bosne i Hercegovine");
+        SV.add("Autobuska stanica Visoko, Federacija Bosne i Hercegovine");
+
+        ArrayList<String> GS = new ArrayList<>();
+        GS.add("Mašica Munje 8, Goražde, Federacija Bosne i Hercegovine");
+        GS.add("Sarajevska, Goražde, Federacija Bosne i Hercegovine");
+        GS.add("R448, Jabuka, Republika Srpska");
+        GS.add("R448, Deševa, Federacija Bosne i Hercegovine");
+        GS.add("Karađorđeva, Pale, Republika Srpska");
+        GS.add("Bentbaša, Sarajevo, Federacija Bosne i Hercegovine");
+        GS.add("Autobuska stanica Sarajevo, Federacija Bosne i Hercegovine");
+
+
+        ArrayList<String> SG = new ArrayList<>();
+        SG.add("Autobuska stanica Sarajevo, Federacija Bosne i Hercegovine");
+        SG.add("Bentbaša, Sarajevo, Federacija Bosne i Hercegovine");
+        SG.add("Karađorđeva, Pale, Republika Srpska");
+        SG.add("R448, Deševa, Federacija Bosne i Hercegovine");
+        SG.add("R448, Jabuka, Republika Srpska");
+        SG.add("Sarajevska, Goražde, Federacija Bosne i Hercegovine");
+        SG.add("Mašica Munje 8, Goražde, Federacija Bosne i Hercegovine");
 
         ArrayList<SimpleRoute> routes1 = new ArrayList<>();
         routes1.add(new SimpleRoute("6:00","7:00","Visoko","Sarajevo",VS));
         routes1.add(new SimpleRoute("8:00","9:00","Visoko","Sarajevo",VS));
         routes1.add(new SimpleRoute("10:00","11:00","Visoko","Sarajevo",VS));
+
         routes1.add(new SimpleRoute("7:00","8:00","Sarajevo","Visoko",SV));
         routes1.add(new SimpleRoute("9:00","10:00","Sarajevo","Visoko",SV));
         routes1.add(new SimpleRoute("11:00","12:00","Sarajevo","Visoko",SV));
+
+        routes1.add(new SimpleRoute("6:00","8:00","Sarajevo","Goražde",SG));
+        routes1.add(new SimpleRoute("10:00","12:00","Sarajevo","Goražde",SG));
+        routes1.add(new SimpleRoute("13:00","15:00","Sarajevo","Goražde",SG));
+
+        routes1.add(new SimpleRoute("6:00","8:00","Goražde","Sarajevo",GS));
+        routes1.add(new SimpleRoute("10:00","12:00","Goražde","Sarajevo",GS));
+        routes1.add(new SimpleRoute("13:00","15:00","Goražde","Sarajevo",GS));
 
         // Sarajevo 43.858113, 18.412156
         // Visoko 43.987477, 18.177795
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
         for (int i=0;i<routes1.size();i++) {
+            String [] d;
             databaseReference.child(routes1.get(i).startAddress).push().setValue(routes1.get(i));
         }
     }

@@ -48,22 +48,10 @@ public class DirectionFinder {
 
     private ArrayList<String> getUrls() throws UnsupportedEncodingException {
         ArrayList<String> urls = new ArrayList<>();
-        for(int i =0;i<stopovers.size();i++) {
-            if(i== 0) {
-                String urlOrigin = URLEncoder.encode(origin, "utf-8");
-                String urlDestination = URLEncoder.encode(stopovers.get(i), "utf-8");
-                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
-            }else if(i == stopovers.size()-1) {
-                String urlOrigin = URLEncoder.encode(stopovers.get(i-1), "utf-8");
-                String urlDestination = URLEncoder.encode(destination, "utf-8");
-                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
-            }
-            else {
-                String urlOrigin = URLEncoder.encode(stopovers.get(i-1), "utf-8");
-                String urlDestination = URLEncoder.encode(stopovers.get(i), "utf-8");
-                urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
-            }
-
+        for(int i = 1;i<stopovers.size();i++) {
+            String urlOrigin = URLEncoder.encode(stopovers.get(i-1), "utf-8");
+            String urlDestination = URLEncoder.encode(stopovers.get(i), "utf-8");
+            urls.add(DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
         }
         return urls;
     }

@@ -29,23 +29,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Spinner
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/locationn">
-            </Spinner>
+            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
 
-            <Spinner
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/destinationn"
                 android:layout_above="@id/locationn">
-            </Spinner>
+            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
 
 
 
