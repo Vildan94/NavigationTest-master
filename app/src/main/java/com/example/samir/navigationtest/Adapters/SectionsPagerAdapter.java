@@ -8,6 +8,7 @@ import android.util.SparseArray;
 import com.example.samir.navigationtest.Fragments.AdvertismentFragment;
 import com.example.samir.navigationtest.Fragments.MapViewFragment;
 import com.example.samir.navigationtest.Fragments.ScheduleFragment;
+import com.example.samir.navigationtest.Fragments.DepartureFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -21,15 +22,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         if(position == 0)
             return AdvertismentFragment.getInstance();
         else if(position == 1)
-            return ScheduleFragment.getInstance();
+            return DepartureFragment.getInstance();
         else if(position == 2)
+            return ScheduleFragment.getInstance();
+        else if(position == 3)
             return MapViewFragment.getInstance();
         return  null;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -38,8 +41,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Advertisment";
             case 1:
-                return "Schedule";
+                return "Departure";
             case 2:
+                return "Schedule";
+            case 3:
                 return "Map";
         }
         return null;

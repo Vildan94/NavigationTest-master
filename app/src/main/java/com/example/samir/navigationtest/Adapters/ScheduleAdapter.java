@@ -12,7 +12,7 @@ import com.example.samir.navigationtest.ViewHolders.ScheduleViewHolder;
 import java.util.List;
 
 /**
- * Created by Shogun on 17.11.2016..
+ * Created by Vildan on 17.11.2016..
  */
 
 // Adapter that lists schedule info

@@ -92,7 +92,7 @@ public class ScheduleFragment extends Fragment {
         final DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), dpListener, year_s, month_s, day_s);
 
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
-        spinner1 =  (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.locationn);
+        spinner1 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.locationn);
         spinner2 = (com.toptoche.searchablespinnerlibrary.SearchableSpinner) view.findViewById(R.id.destinationn);
         Button displayRoutes = (Button) view.findViewById (R.id.btnDisplayRoutes);
         displayRoutes.setOnClickListener(new View.OnClickListener() {
@@ -162,9 +162,6 @@ public class ScheduleFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
-
-
-
 
         // when I get location and destination I need to find routes
         //routes = getStation(selection1);
