@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class AdvertismentFragment extends Fragment {
 
     private static AdvertismentFragment instance = null;
-    ArrayList<Ad> ads=new ArrayList<Ad>();
+    final ArrayList<Ad> ads=new ArrayList<Ad>();
     StaggeredGridLayoutManager mStaggeredLayoutManager;
     RecyclerView mRecyclerView;
     AdAdapter mAdAdapter;
@@ -47,7 +47,7 @@ public class AdvertismentFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
-        databaseReference.child("Advertisement").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Advertisements").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();

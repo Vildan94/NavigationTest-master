@@ -11,16 +11,59 @@
     tools:context="com.example.samir.navigationtest.AdDetails">
 
     <ImageView
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/imageAdDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
         />
-
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="112dp"
+        android:orientation="vertical">
     <TextView
+        android:textSize="32sp"
         android:layout_above="@+id/imageAdDetails"
         android:id="@+id/textAdDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
 
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:rating="3"/>
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="157 Votes"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+    android:text="Description"
+    android:id="@+id/descriptionAdDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="130dp"
+    android:textColor="@android:color/black"/>
 </RelativeLayout>
