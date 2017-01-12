@@ -8,6 +8,7 @@ public class SimpleRoute {
     public String endAddress;
     public String startAddress;
     public ArrayList<String> allStopovers;
+    public ArrayList<String> operatingDays;
 
     public SimpleRoute(){
         this.depTime = null;
@@ -15,13 +16,15 @@ public class SimpleRoute {
         this.endAddress = null;
         this.startAddress = null;
         allStopovers = null;
+        operatingDays = null;
     }
 
-    public SimpleRoute(String dTime,String aTime, String sAddress, String eAddress, ArrayList<String> aStopovers){
+    public SimpleRoute(String dTime,String aTime, String sAddress, String eAddress, ArrayList<String> aStopovers,ArrayList<String> oDays){
         depTime = dTime;
         arrTime = aTime;
         startAddress = sAddress;
         endAddress = eAddress;
         allStopovers = aStopovers;
+        operatingDays = oDays;
     }
 }

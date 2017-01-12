@@ -7,7 +7,7 @@
     android:tag="mapFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:paddingTop="180dp"
+        android:paddingTop="200dp"
         android:id="@+id/scheduleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +17,7 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:layout_margin="10dp"
         android:background="#fcf9f9"
         android:backgroundTint="#fcf9f9"
@@ -31,20 +31,39 @@
             android:orientation="vertical"
             >
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <TextView android:text="@string/from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:id="@+id/From"/>
+
+                <Button
+                    android:id="@+id/startDate"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@android:drawable/ic_dialog_dialer"/>
+
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/From"
                     android:id="@+id/locationn">
                 </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
 
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <TextView android:text="@string/to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,11 +73,14 @@
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/destinationn"
-                    android:layout_above="@id/locationn">
+                    android:layout_below="@+id/To">
                 </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+
+            </RelativeLayout>
 
             <Button
                 android:layout_width="match_parent"
@@ -68,12 +90,9 @@
                 android:layout_below="@+id/destinationn"
                 android:text="SEARCH">
 
-
             </Button>
+
         </LinearLayout>
-
-
-
 
     </android.support.v7.widget.CardView>
 

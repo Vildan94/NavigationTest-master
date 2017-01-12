@@ -1,6 +1,7 @@
 package com.example.samir.navigationtest.Fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -19,12 +20,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 // Fragment used to show Advertisment
-public class AdvertismentFragment extends PlaceholderFragment {
+public class AdvertismentFragment extends Fragment {
 
+    private static AdvertismentFragment instance = null;
     ArrayList<Ad> ads=new ArrayList<Ad>();
     StaggeredGridLayoutManager mStaggeredLayoutManager;
     RecyclerView mRecyclerView;
     AdAdapter mAdAdapter;
+
+    public AdvertismentFragment() {
+    }
+
+    public static AdvertismentFragment getInstance() {
+        if(instance == null) {
+            instance = new AdvertismentFragment();
+        }
+        return instance;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

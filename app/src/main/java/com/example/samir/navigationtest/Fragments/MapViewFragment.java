@@ -3,6 +3,7 @@ package com.example.samir.navigationtest.Fragments;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Fragment that displays a map and a route on it
-public class MapViewFragment extends PlaceholderFragment implements DirectionFinderListener{
+public class MapViewFragment extends Fragment implements DirectionFinderListener{
 
+    private static MapViewFragment instance = null;
     MapView mMapView;
     private GoogleMap googleMap;
     private SearchView findPath;
@@ -53,6 +55,16 @@ public class MapViewFragment extends PlaceholderFragment implements DirectionFin
 
     public void setStopovers(ArrayList<String> stopovers) {
         this.stopovers = stopovers;
+    }
+
+    public MapViewFragment() {
+    }
+
+    public static MapViewFragment getInstance() {
+        if(instance == null) {
+            instance = new MapViewFragment();
+        }
+        return instance;
     }
 
     @Override
