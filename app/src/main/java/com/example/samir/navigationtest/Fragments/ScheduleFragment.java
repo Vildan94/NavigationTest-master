@@ -43,6 +43,7 @@ public class ScheduleFragment extends Fragment {
     private com.toptoche.searchablespinnerlibrary.SearchableSpinner spinner2;
 
     private ArrayList<SimpleRoute> routes;
+
     private String selection;
     private String selection1;
     private String selection2;
@@ -84,6 +85,7 @@ public class ScheduleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         routes = new ArrayList<>();
+
         selection = "Sarajevo-Visoko";
         selection1 = "Sarajevo";
         selection2 = "Visoko";
