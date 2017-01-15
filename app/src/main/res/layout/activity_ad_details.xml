@@ -11,9 +11,9 @@
     tools:context="com.example.samir.navigationtest.AdDetails">
 
     <ImageView
-        android:layout_width="98dp"
-        android:layout_height="98dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
         android:id="@+id/imageAdDetails"
         />
@@ -22,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="112dp"
+        android:layout_marginLeft="132dp"
         android:orientation="vertical">
     <TextView
         android:textSize="32sp"
@@ -42,28 +42,29 @@
 
             <RatingBar
                 android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
+                style="?android:attr/ratingBarStyleIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:rating="3"/>
+                android:isIndicator="false"
+                android:stepSize="1.0"
+                />
 
             <TextView
-                android:id="@+id/text4"
+                android:id="@+id/votes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="157 Votes"
                 android:textColor="@android:color/black"/>
 
         </LinearLayout>
     </LinearLayout>
     <TextView
-    android:text="Description"
+        android:textSize="22sp"
     android:id="@+id/descriptionAdDetails"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
-    android:layout_marginTop="130dp"
+    android:layout_marginTop="170dp"
     android:textColor="@android:color/black"/>
 </RelativeLayout>
