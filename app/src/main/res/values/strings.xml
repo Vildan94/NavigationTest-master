@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Transportation</string>
+    <string name="app_name">BRoutes</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_main">Transportation</string>
+    <string name="title_activity_main">BRoutes</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_source">Choose your location</string>
     <string name="choose_destionation">Choose destination</string>

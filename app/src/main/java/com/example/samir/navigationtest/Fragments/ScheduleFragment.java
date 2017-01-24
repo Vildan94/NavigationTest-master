@@ -104,7 +104,6 @@ public class ScheduleFragment extends Fragment {
                 for (SimpleRoute r : scheduleAdapter.scheduleList) {
                         scheduleAdapter.notifyDataSetChanged();
                 }
-                // Vildan stavio
                 Toast.makeText(view.getContext(), "You have searched!", Toast.LENGTH_LONG).show();
             }
         });
@@ -197,7 +196,7 @@ public class ScheduleFragment extends Fragment {
                     if(cond){
                         boolean added = false;
                         for (String st: r.operatingDays) {
-                            if(st.equals(dayOfWeek) && !added) {
+                            if(!added) {
                                 s.add(r);
                                 added = true;
                             }

@@ -3,12 +3,12 @@ package com.example.samir.navigationtest.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.SparseArray;
 
 import com.example.samir.navigationtest.Fragments.AdvertismentFragment;
+import com.example.samir.navigationtest.Fragments.DepartureFragment;
 import com.example.samir.navigationtest.Fragments.MapViewFragment;
 import com.example.samir.navigationtest.Fragments.ScheduleFragment;
-import com.example.samir.navigationtest.Fragments.DepartureFragment;
+
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -39,9 +39,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Advertisment";
+                return "Ads";
             case 1:
-                return "Departure";
+                return "Departures";
             case 2:
                 return "Schedule";
             case 3:

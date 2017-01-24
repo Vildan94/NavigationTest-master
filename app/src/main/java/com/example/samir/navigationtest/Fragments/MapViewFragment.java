@@ -97,6 +97,7 @@ public class MapViewFragment extends Fragment implements DirectionFinderListener
         findPath.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (location.getText().length()>0)
                 sendRequest();
             }
         });
