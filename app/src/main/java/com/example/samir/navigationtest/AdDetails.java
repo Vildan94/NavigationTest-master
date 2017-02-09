@@ -42,7 +42,7 @@ public class AdDetails extends AppCompatActivity {
                 ad.AdVotes=""+votes1;
                 ad.AdRating=""+rating1;
                 ratingBar.setRating(Float.parseFloat(ad.AdRating));
-                votes.setText(ad.AdVotes+" Votes");
+                votes.setText(ad.AdVotes+"Votes");
                 databaseReference.child("Advertisements").child(ad.AdId).setValue(ad);
             }
         });

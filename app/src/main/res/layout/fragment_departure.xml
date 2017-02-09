@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mapFragment"
-    android:tag="mapFragment">
+    android:tag="mapFragment"
+    android:background="@mipmap/travelq">
 
     <android.support.v7.widget.RecyclerView
-        android:paddingTop="150dp"
+        android:paddingTop="130dp"
         android:id="@+id/scheduleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +18,7 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:layout_margin="10dp"
         android:background="#fcf9f9"
         android:backgroundTint="#fcf9f9"
@@ -59,7 +60,7 @@
                 android:id="@+id/btnDisplayRoutes"
                 android:layout_gravity="center"
                 android:layout_below="@+id/destinationn"
-                android:text="SEARCH">
+                android:text="@string/SEARCH">
 
             </Button>
 

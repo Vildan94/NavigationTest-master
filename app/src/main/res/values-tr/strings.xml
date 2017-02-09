@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BRoutes</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main">BRoutes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_source">Yeri seçin</string>
+    <string name="choose_destionation">Hedefi seçin</string>
+    <string name="from">Yerden</string>
+    <string name="to">Yere</string>
+    <string name="SEARCH">Ara</string>
+    <string name="CITY">Sehir</string>
+
+
+
+</resources>

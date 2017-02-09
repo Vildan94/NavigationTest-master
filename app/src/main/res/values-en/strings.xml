@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BRoutes</string>
     <string name="action_settings">Settings</string>
@@ -11,9 +12,5 @@
     <string name="SEARCH">SEARCH</string>
     <string name="CITY">City</string>
     <string name="Turkish">turkish</string>
-    <string name="ADS">Reklame</string>
     <string name="Bosanski">Bosanski</string>
-    <string name="debug_menu_title">Bosanski</string>
 </resources>
-
-

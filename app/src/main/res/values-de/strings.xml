@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BRoutes</string>
+    <string name="CITY">Stadt</string>
+    <string name="SEARCH">Suche</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="choose_destionation">Ziel wählen</string>
+    <string name="choose_source">Wähle deinen Standort</string>
+    <string name="from">Von</string>
+    <string name="to">Zur</string>
+</resources>

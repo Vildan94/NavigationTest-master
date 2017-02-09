@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BRoutes</string>
+    <string name="action_settings">Postavke</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main">BRoutes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_source">Izaberite svoju lokaciju</string>
+    <string name="choose_destionation">Izaberite destinaciju</string>
+    <string name="from">Od</string>
+    <string name="to">Do</string>
+    <string name="SEARCH">Traži</string>
+    <string name="CITY">Grad</string>
+    <string name="Votes">Broj glasova</string>
+    <string name="ADS">Reklame</string>
+    <string name="CLOSE">Zatvori</string>
+</resources>

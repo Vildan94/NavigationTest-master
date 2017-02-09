@@ -1,19 +1,23 @@
 package com.example.samir.navigationtest;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
 import com.example.samir.navigationtest.Adapters.SectionsPagerAdapter;
-import com.example.samir.navigationtest.Fragments.MapViewFragment;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         destination = (TextView) rootView.findViewById(R.id.destination);
         location.setText(st[0]);
         destination.setText(st[1]);
+
     }
 
 
@@ -74,8 +79,49 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Locale myLocale = new Locale("en");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            MainActivity.this.recreate();
+            return true;
+        }
+        else if (id == R.id.bosanski) {
+            Locale myLocale = new Locale("hr");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            MainActivity.this.recreate();
+            return true;
+        }
+        else if (id == R.id.german) {
+            Locale myLocale = new Locale("de");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            MainActivity.this.recreate();
+            return true;
+        }
+        else if (id == R.id.turkish) {
+            Locale myLocale = new Locale("tr");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+            MainActivity.this.recreate();
+           /* Intent intent = getIntent();
+            finish();
+            startActivity(intent);*/
             return true;
         }
 

@@ -10,10 +10,12 @@ import com.example.samir.navigationtest.Fragments.MapViewFragment;
 import com.example.samir.navigationtest.Fragments.ScheduleFragment;
 
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentPagerAdapter  {
+
 
 
     public SectionsPagerAdapter(FragmentManager fm) {
+
         super(fm);
     }
 
@@ -39,7 +41,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Ads";
+                return "ADS";
             case 1:
                 return "Departures";
             case 2:
@@ -49,4 +51,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }
         return null;
     }
+
+
+
 }
